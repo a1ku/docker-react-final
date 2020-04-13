@@ -1,0 +1,21 @@
+version: '3'
+services: 
+    web:
+        tty: true
+        build: 
+            dockerfile: Dockerfile.dev
+            context: .
+        ports: 
+            - "3000:3000"
+        volumes: 
+            - /app/node_modules
+            - .:/app
+    test-runner:
+        # tty: true
+        build: 
+            dockerfile: Dockerfile.dev
+            context: .
+        command: npm run
+        volumes: 
+            - /app/node_modules
+            - .:/app
